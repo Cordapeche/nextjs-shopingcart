@@ -1,0 +1,4 @@
+.image {
+  object-fit: contain;
+  height: unset !important;
+}
