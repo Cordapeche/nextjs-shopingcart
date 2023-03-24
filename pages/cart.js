@@ -1,39 +1,30 @@
 import React from 'react'
-import Image from 'next/image'
-import Head from 'next/head'
 import { FaMinusCircle, FaPlusCircle } from 'react-icons/fa'
 import { useCart } from 'react-use-cart'
 
 const Cart = () => {
-  const { updateItemQuantity, items, cartTotal } = useCart()
+  const { updateItemQuantity, items, cartTotal } = useCart()  
+
   return (
     <div>
       <div className='row'>
         <div className='col-md-8 col-12'>
-          {items.map((product) => (
-            <div key={product.id} className='card rounded-0 border-0 px-2'>
+          {items.map((article) => (
+            <div key={article.id} className='card rounded-0 border-0 px-2'>
               <div className='row'>
                 <div className='col-4 my-auto'>
-                  <Image
-                    src={product.image}
-                    height='100'
-                    width='100'
-                    priority
-                    className='card-image-top img-fluid image'
-                    alt={product.name}
-                  />
                 </div>
                 <div className='col-8 my-auto'>
                   <div className='card-body py-0 d-flex justify-content-between'>
-                    <p className='card-title fw-light'>{product.name}</p>
+                    <p className='card-title fw-light'>{article.name}</p>
                     <p className='card-title fw-light'>
-                      {product.quantity} x ${product.price}
+                      {article.quantity} x ${article.price}
                     </p>
                   </div>
                   <div className='card-body py-0 btn-group float-end'>
                     <button
                       onClick={() =>
-                        updateItemQuantity(product.id, product.quantity - 1)
+                        updateItemQuantity(article.id, article.quantity - 1)
                       }
                       className='btn btn-danger btn-sm rounded-pill me-3'
                     >
@@ -41,7 +32,7 @@ const Cart = () => {
                     </button>
                     <button
                       onClick={() =>
-                        updateItemQuantity(product.id, product.quantity + 1)
+                        updateItemQuantity(article.id, article.quantity + 1)
                       }
                       className='btn btn-primary btn-sm rounded-pill me-3'
                     >
